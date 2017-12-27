@@ -3,6 +3,7 @@ kind: PersistentVolume
 metadata:
   name: pg-volume
 spec:
+  storageClassName: manual
   accessModes:
     - ReadWriteOnce
   capacity:

@@ -1,5 +1,6 @@
 body {
   background-color: #F8F8F8;
+  font-family: lato, sans-serif;
 }
 
 #content {
@@ -9,8 +10,22 @@ body {
 
 #comment-input {
   width: 100%;
-  font-size: 1.5em;
-  text-indent: 10px;
+  font-size: 1.3em;
+  text-indent: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+input:focus, button:focus {
+  outline: none;
+}
+
+#post-button {
+  width: 20%;
+  font-size: 1.3em;
+  background-color: #00BD76;
+  margin-top: 15px;
+  margin-left: 80%;
   padding-top: 5px;
   padding-bottom: 5px;
 }

@@ -31,3 +31,10 @@ spec:
             secretKeyRef:
               name: db-credentials
               key: database
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: pg-volume
+      volumes:
+      - name: pg-volume
+        persistentVolumeClaim:
+          claimName: pg-volume-claim
