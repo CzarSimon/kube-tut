@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kube-tut-config
+  namespace: default
+data:
+  backend-port: "3000"
+  pg-port: "5432"

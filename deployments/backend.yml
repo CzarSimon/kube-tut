@@ -1,0 +1,51 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: kubetut.backend
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: kubetut
+    spec:
+      containers:
+      - name: kubetut-backend
+        image: czarsimon/kube-tut-backend:v2
+        ports:
+        - name: backend-port
+          containerPort: 3000
+        env:
+        - name: SERVER_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: kube-tut-config
+              key: backend-port
+        - name: DB_HOST
+          value: database-service
+        - name: DB_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: kube-tut-config
+              key: pg-port
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: password
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: username
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: database
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: backend-port
+          initialDelaySeconds: 30
+          timeoutSeconds: 30
