@@ -11,7 +11,13 @@ spec:
     spec:
       containers:
         - name: nginx-webserver
-          image: czarsimon/kubetut-frontend:171228-3
+          image: czarsimon/kubetut-frontend:v1
           ports:
           - name: webserver-port
             containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: webserver-port
+            initialDelaySeconds: 30
+            timeoutSeconds: 30
