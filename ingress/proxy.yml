@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kubetut-proxy
+spec:
+  rules:
+  - host: kubetut.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: webserver
+          servicePort: 80
+      - path: /api/comment
+        backend:
+          serviceName: backend-service
+          servicePort: 3000

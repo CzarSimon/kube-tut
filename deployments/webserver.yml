@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: kubetut-webserver
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: kubetut
+    spec:
+      containers:
+        - name: nginx-webserver
+          image: czarsimon/kubetut-frontend:171228-3
+          ports:
+          - name: webserver-port
+            containerPort: 80

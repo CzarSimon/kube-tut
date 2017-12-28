@@ -75,11 +75,11 @@ var createCommentPost = function(message) {
 }
 
 /* ----- HTTP API functions ----- */
-var BACKEND_HOST = '192.168.99.100:30360';
+var BACKEND_HOST = 'kubetut.io';
 
 // toURL Creates a http route by prepending protocol and backend host and port
 var toURL = function(route) {
-  return 'http://' + BACKEND_HOST + route;
+  return route;
 }
 
 // getRequest Creates and executes a get request
@@ -121,7 +121,7 @@ var makeRequestObject = function(method, body) {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
-    mode: 'no-cors',
+    mode: 'cors',
     body: JSON.stringify(body)
   };
 }
